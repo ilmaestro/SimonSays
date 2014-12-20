@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+ 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+
+    <title>Simon Says</title>
+
+
+    <style type="text/css">
+    	body {
+    	}
+    	.game {
+    		width: 400px;
+    		height: 400px;
+    		border: 1px solid #efefef;
+    	}
+    	.square {
+    		position: relative;
+    		height: 200px;
+    		width: 200px;
+    		float: left;
+    		-moz-transition:background-color 1s;
+		    -webkit-transition:background-color 1s;
+		    -o-transition:background-color 1s;
+		    transition:background-color 1s;
+    	}
+    	div.r.inactive {
+    		background-color: #A10000;
+    	}
+    	div.g.inactive {
+    		background-color: #00A100;
+    	}
+    	div.b.inactive {
+    		background-color: #0000A1;
+    	}
+    	div.y.inactive {
+    		background-color: #A1A100;
+    	}
+    	div.r.active {
+    		background-color: #FF0000;
+    	}
+    	div.g.active {
+    		background-color: #00FF00;
+    	}
+    	div.b.active {
+    		background-color: #0000FF;
+    	}
+    	div.y.active {
+    		background-color: #FFFF00;
+    	}
+    </style>
+</head>
+<body>
+<h1>Simon Says</h1>
+<button class="newGame">New Game</button>
+<div class="game">
+	<div class="square r inactive"></div>
+	<div class="square b inactive"></div>
+	<div class="square g inactive"></div>
+	<div class="square y inactive"></div>
+</div>
+<script src="app.js" type="text/javascript"></script>  
+<script type="text/javascript">
+	s = new SimonSays.Game();
+</script>
+</body>
+</html>
