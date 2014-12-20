@@ -8,20 +8,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
 
     <title>Simon Says</title>
-
-
     <style type="text/css">
     	body {
+    		background-color: #000000;
     	}
     	.game {
-    		width: 400px;
-    		height: 400px;
+    		width: 420px;
+    		height: 420px;
+    		padding: 2px;
     		border: 1px solid #efefef;
+    		background-color: #404040;
     	}
     	.square {
     		position: relative;
     		height: 200px;
     		width: 200px;
+    		margin: 4px;
     		float: left;
     		-moz-transition:background-color 1s;
 		    -webkit-transition:background-color 1s;
@@ -53,19 +55,19 @@
     		background-color: #FFFF00;
     	}
     </style>
+	<script src="riffwave.js" type="text/javascript"></script>  
 </head>
 <body>
-<h1>Simon Says</h1>
-<button class="newGame">New Game</button>
-<div class="game">
-	<div class="square r inactive"></div>
-	<div class="square b inactive"></div>
-	<div class="square g inactive"></div>
-	<div class="square y inactive"></div>
-</div>
-<script src="app.js" type="text/javascript"></script>  
-<script type="text/javascript">
-	s = new SimonSays.Game();
-</script>
+	<button class="newGame">New Game</button>
+	<div class="game">
+		<div class="square r inactive"></div>
+		<div class="square b inactive"></div>
+		<div class="square g inactive"></div>
+		<div class="square y inactive"></div>
+	</div>
+	<script src="app.js" type="text/javascript"></script>  
+	<script type="text/javascript">
+		game = new SimonSays.Game();
+	</script>
 </body>
 </html>

@@ -84,12 +84,38 @@ function $(selector, container) {
 	};
 }());
 
+(function(){
+	var _ = SimonSays.Sounds = function() {
+		this.audio = this.sineWave();
+	};
+	_.prototype = {
+		sineWave: function(){
+			// SINE WAVE
+			var sine = []; for (var i=0; i<10000; i++) sine[i] = 128+Math.round(127*Math.sin(i/5));
+			var wave = new RIFFWAVE(sine);
+			var audio = new Audio(wave.dataURI);
+			return audio;
+		},
+		play: function() {
+		  if (!this.audio.paused) { // if playing stop and rewind
+		    this.audio.pause();
+		    this.audio.currentTime = 0;
+		  }
+		  this.audio.play();
+		},
+		stop: function(){
+			this.audio.pause();
+		    this.audio.currentTime = 0;
+		}
+	};
+}());
 
 (function(){
 	var _ = SimonSays.Game = function() {
 		var self = this;
 		this.gamestate = new SimonSays.GameState();
 		this.isButtonBleeping = false;
+		this.sound = new SimonSays.Sounds();
 
 		this.buttons = {
 			red: $('div.r'),
@@ -98,6 +124,7 @@ function $(selector, container) {
 			yellow: $('div.y'),
 			newGame: $('button.newGame')
 		};
+
 		this.buttons.red.addEventListener('click', function() {
 			self.onPlayerButton('red');
 		});
@@ -173,6 +200,7 @@ function $(selector, container) {
 		bleepButtonOn: function(button, time, callback){
 			var self = this;
 			this.isButtonBleeping = true;
+			//this.sound.play();
 			var newClassName = this.buttons[button].className.replace("inactive", "active");
 			this.buttons[button].className = newClassName;
 			
@@ -184,6 +212,7 @@ function $(selector, container) {
 		},
 		bleepButtonOff: function(button){
 			this.isButtonBleeping = false;
+			//this.sound.stop();
 			var newClassName = this.buttons[button].className.replace("active", "inactive");
 			this.buttons[button].className = newClassName;
 			//console.log("BLEEP OFF");
