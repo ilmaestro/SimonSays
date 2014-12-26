@@ -167,9 +167,12 @@ function $(selector, container) {
 				}
 				else {
 					var color = self.gamestate.getColorFromStack(index);
-					self.bleepButtonOn(color, time, function(){
-						playStack(index+1);
+					self.bleepButtonOn(color, 500, function(){
+						//ignore
 					});
+					setTimeout(function(){
+						playStack(index+1);
+					},time);
 				}
 			}			
 			playStack(0);
